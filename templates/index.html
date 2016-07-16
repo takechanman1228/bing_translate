@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  {% if message: %}
+    <p>{{ message }}</p>
+  {% endif %}
+
+  {% if result: %}
+    <p>{{source}} -> {{ result }}</p>
+  {% endif %}
+  <form action="" method="post">
+    <p>
+      <select name="from_lang">
+      <option value="en">英語</option>
+      <option value="ja">日本語</option>
+      <option value="zh-CHS">中国語</option>
+      <option value="ko">韓国語</option>
+      </select>
+      ->
+      <select name="to_lang">
+      <option value="en">英語</option>
+      <option value="ja">日本語</option>
+      <option value="zh-CHS">中国語</option>
+      <option value="ko">韓国語</option>
+      </select>
+    </p>
+      <p><textarea name=source cols=40 rows=4></textarea></p>
+    <input type=submit value=Translate>
+  </form>
+  {% if histories: %}
+    <p>翻訳履歴</p>
+    <ul>
+      {% for source, target in histories.items():  %}
+        <li>{{ source }} -> {{ target }}</li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+</body>
+</html>
